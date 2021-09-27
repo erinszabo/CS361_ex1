@@ -2,26 +2,28 @@
 # and should always be initialized with a name and score.
 
 class Player
-    def initialize(name)
+    def initialize(name, score)
         @name = name # Player 1, Player 2, etc.
-        #score
+        @score = score # 10..300
     end
 
-    # ToString type of thing here
-    # to say: "Ready {name}! Score: {score}"
+    # very cool rubyism 
+    def to_s
+        "Ready #{@name}! Score: #{@score}" 
+    end
 end
-
-# func to make a random int score between 10 and 300
 
 
 ### Main: ### 
+players = []
 
-# create players array 
-
-# use iterater to... (possibly all in one line)
-#   get a random number to set as score 
-#   create player object and apd to the array
-# 50 times
+50.times do |i|
+    score = rand(10..300)  # set a score 
+    name = "Player #{i + 1}"  # set a name
+    players << Player.new(name, score)
+end
 
 # print player string for each player
-
+players.each_with_index do |player|
+    puts player
+end
